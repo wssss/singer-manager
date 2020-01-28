@@ -1,63 +1,66 @@
 <template>
-	<div id="app">
-		<section class="main-content">
+  <div id="app">
+    <section class="main-content">
       <router-view />
     </section>
-    <tabbar v-if="!$route.meta.noTabbar" style="position:relative" @on-index-change="change()">
-      <tabbar-item link="/">
-        <img slot="icon"  src="./assets/images/home.png">
-        <img slot="icon-active"  src="./assets/images/home-active.png">
+    <tabbar v-if="!$route.meta.noTabbar"  style="position:relative" @on-index-change="change()">
+      <tabbar-item :selected="$route.name == 'home'" link="/">
+        <img slot="icon" src="./assets/images/home.png" />
+        <img slot="icon-active" src="./assets/images/home-active.png" />
         <span slot="label">点歌列表</span>
-      </tabbar-item>
-      <tabbar-item link="/about">
-        <img slot="icon-active"  src="./assets/images/user-active.png">
-        <img slot="icon" src="./assets/images/user.png">
+      </tabbar-item >
+      <tabbar-item :selected="$route.name != 'home'" link="/about">
+        <img slot="icon-active" src="./assets/images/user-active.png" />
+        <img slot="icon" src="./assets/images/user.png" />
         <span slot="label">我的</span>
       </tabbar-item>
     </tabbar>
-	</div>
+  </div>
 </template>
 <script>
 import { Tabbar, TabbarItem } from "vux";
 
 export default {
-	components: {
-		Tabbar,
+  components: {
+    Tabbar,
     TabbarItem
   },
-  data(){
+  data() {
     return {
-     
-    }
+      
+    };
   },
-  methods:{
-    change(){
+  methods: {
+    change() {
       
     }
+  },
+  created(){
+
   }
 };
 </script>
 <style lang="less">
-@import '~vux/src/styles/reset.less';
+@import "~vux/src/styles/reset.less";
 #app {
   height: 100%;
-	font-family: "Avenir", Helvetica, Arial, sans-serif;
-	-webkit-font-smoothing: antialiased;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  width:100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
-
 }
-html,body{
+html,
+body {
   height: 100%;
 }
-.main-content{
+.main-content {
   display: flex;
   flex: 1;
-  overflow:auto;
+  overflow: auto;
 }
-.router-link-active{
-  color: #09BB07;
+.router-link-active {
+  color: #09bb07;
 }
 </style>
